@@ -17,8 +17,9 @@
 (global-auto-revert-mode t)
 
 
-(defun setup-custom-config (config-path)
-  (setq custom-file (concat config-path "custom.el"))
+
+(progn
+  (setq custom-file (concat user-emacs-directory "custom.el"))
   (if (file-exists-p custom-file)
       (load custom-file)))
 
@@ -80,6 +81,7 @@
   :ensure t)
 
 (use-package lsp-mode
+  :ensure t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
@@ -97,18 +99,8 @@
 
 (use-package elixir-ts-mode
   :ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("69f7e8101867cfac410e88140f8c51b4433b93680901bb0b52014144366a08c8" default))
- '(package-selected-packages
-   '(magit treesit-auto which-key vertico modus-themes marginalia elixir-ts-mode company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; disable suspend keybindings
+(global-unset-key [(control z)])
+(global-unset-key [(control x) (control z)])
+
