@@ -55,6 +55,9 @@
       load-prefer-newer t
       backup-by-copying t)
 
+;; supress warnings
+(setq warning-minimum-level :error)
+
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (require 'package)
