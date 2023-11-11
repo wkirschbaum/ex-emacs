@@ -1,4 +1,32 @@
-;; Config seed: https://www.mgmarlow.com/words/2023-01-18-emacs-29-quick-start/
+;;; init.el --- Emacs config for Elixir hacking  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2023 Wilhelm H Kirschbaum
+
+;; Author           : Wilhelm H Kirschbaum
+;; URL              : https://github.com/wkirschbaum/ex-emacs
+;; Package-Requires : ((emacs "29.1") (lsp-mode "8.0.1"))
+;; Created          : November 2023
+;; Keywords         : elixir languages
+
+;;  This program is free software: you can redistribute it and/or modify
+;;  it under the terms of the GNU General Public License as published by
+;;  the Free Software Foundation, either version 3 of the License, or
+;;  (at your option) any later version.
+
+;;  This program is distributed in the hope that it will be useful,
+;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;  GNU General Public License for more details.
+
+;;  You should have received a copy of the GNU General Public License
+;;  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; LSP Client for the Elixir NextLS language server.
+
+;;; Code:
+
 
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
@@ -13,10 +41,7 @@
 (setq-default indent-tabs-mode nil)
 (save-place-mode t)
 (savehist-mode t)
-(recentf-mode t)
 (global-auto-revert-mode t)
-
-
 
 (progn
   (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -90,7 +115,11 @@
          (heex-ts-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :commands lsp
+  :config
+  
+  (load (expand-file-name "lsp-lexical.el"))
+  (load (expand-file-name "lsp-next-ls.el")))
 
 (use-package treesit-auto
   :ensure t
@@ -104,3 +133,5 @@
 (global-unset-key [(control z)])
 (global-unset-key [(control x) (control z)])
 
+
+;;; init.el ends here
