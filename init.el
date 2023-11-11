@@ -118,8 +118,14 @@
   :commands lsp
   :config
   
-  (load (expand-file-name "lsp-lexical.el"))
-  (load (expand-file-name "lsp-next-ls.el")))
+  (load (expand-file-name "lsp-lexical.el" user-emacs-directory))
+  (load (expand-file-name "lsp-next-ls.el" user-emacs-directory)))
+
+(setq treesit-language-source-alist
+      '((elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+        (heex "https://github.com/phoenixframework/tree-sitter-heex")))
+
+(mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
 
 (use-package elixir-ts-mode
   :ensure t)
