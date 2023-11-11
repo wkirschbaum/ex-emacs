@@ -121,11 +121,6 @@
   (load (expand-file-name "lsp-lexical.el"))
   (load (expand-file-name "lsp-next-ls.el")))
 
-(use-package treesit-auto
-  :ensure t
-  :config
-  (global-treesit-auto-mode))
-
 (use-package elixir-ts-mode
   :ensure t)
 
