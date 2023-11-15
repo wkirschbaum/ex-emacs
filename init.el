@@ -23,8 +23,6 @@
 
 ;;; Commentary:
 
-;; LSP Client for the Elixir NextLS language server.
-
 ;;; Code:
 
 
@@ -120,7 +118,7 @@
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
-  
+
   (load (expand-file-name "lsp-lexical.el" user-emacs-directory))
   (load (expand-file-name "lsp-next-ls.el" user-emacs-directory)))
 
